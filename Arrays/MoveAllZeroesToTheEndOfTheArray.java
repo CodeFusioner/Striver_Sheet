@@ -5,7 +5,7 @@ import java.util.List;
 
 public class MoveAllZeroesToTheEndOfTheArray {
     public static void main(String[] args) {
-         Brute force
+         //Brute force
         int [] arr1 = {0,3,0,5,0,1,2};
         List<Integer> ll = new ArrayList<>();
         for(int i=0;i<arr1.length;i++){
