@@ -7,6 +7,7 @@ public class majorityElement {
         int[] nums = {2, 2, 1, 3, 1, 1, 3, 1,1};
         System.out.println(majorityElem(nums));
         System.out.println(majorityElem2(nums));
+        System.out.println(majorityElem3(nums));
 
     }
 
@@ -37,5 +38,21 @@ public class majorityElement {
             }
         }
         return -1;
+    }
+    public static int majorityElem3(int[] nums) {
+        // optimal approach
+        int count = 0;
+        int element = 0;
+        for(int i = 0; i < nums.length; i++) {
+            if(count == 0) {
+                count = 1;
+                element = nums[i];
+            }else if(nums[i] == element) {
+                count++;
+            }else{
+                count--;
+            }
+        }
+        return element;
     }
 }
