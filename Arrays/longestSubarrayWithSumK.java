@@ -20,7 +20,7 @@ public class longestSubarrayWithSumK {
                 left++;
             }
             if(sum == k){
-                maxLen = Math.max(maxLen , right - left + 1);  /
+                maxLen = Math.max(maxLen , right - left + 1);
             }
             right++;
             if(right < arr.length){
