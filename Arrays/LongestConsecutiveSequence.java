@@ -1,11 +1,12 @@
 package Arrays;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class LongestConsecutiveSequence {
     public static void main(String[] args) {
 //        brute force
-        int [] arr = {101,4,100,1,101,3,2,1,1};
+        int[] arr = {101, 4, 100, 1, 101, 3, 2, 1, 1};
 //        int cnt = 1;
 //        for(int i = 0;i<arr.length;i++){
 //            int x = arr[i];
@@ -18,25 +19,44 @@ public class LongestConsecutiveSequence {
 //        System.out.println(cnt);
 
 //         better approach
-        Arrays.sort(arr);
+//        Arrays.sort(arr);
+//        int lastSmaller = Integer.MIN_VALUE;
+//        int cnt = 0;
+//        int longest = 0;
+//        for(int i = 0;i<arr.length;i++){
+//            if(arr[i] - 1 == lastSmaller){
+//                cnt++;
+//                lastSmaller = arr[i];
+//            }else if(arr[i] != lastSmaller){
+//                cnt = 1;
+//                lastSmaller = arr[i];
+//            }
+//            longest = Math.max(longest,cnt);
+//        }
+//        System.out.println(longest);
+
+        // optimal approach
         int lastSmaller = Integer.MIN_VALUE;
+        HashSet<Integer> set = new HashSet<>();
+        for (int i : arr) {
+            set.add(i);
+        }
         int cnt = 0;
         int longest = 0;
-        for(int i = 0;i<arr.length;i++){
-            if(arr[i] - 1 == lastSmaller){
+        for (int i : set) {
+            if (i - 1 == lastSmaller) {
                 cnt++;
-                lastSmaller = arr[i];
-            }else if(arr[i] != lastSmaller){
+                lastSmaller = i;
+            }else if(i != lastSmaller){
                 cnt = 1;
-                lastSmaller = arr[i];
+                lastSmaller = i;
             }
-            longest = Math.max(longest,cnt);
+            longest = Math.max(cnt , longest);
         }
         System.out.println(longest);
 
-
-
     }
+
     public static boolean linearSearch(int[] arr, int target) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == target) {
