@@ -9,7 +9,7 @@ public class CountSubarraysWithXorK {
         for(int i = 0;i<arr.length;i++){
             for(int j = i;j<arr.length;j++){
                 int xor = 0;
-                for(int k = i;k<j;k++){
+                for(int k = i;k<=j;k++){
                     xor ^= arr[k];
                 }
                 if(xor == K){
@@ -21,5 +21,15 @@ public class CountSubarraysWithXorK {
 
         // better solution
 
+        for(int i=0; i<arr.length; i++){
+            int xor = 0;
+            for(int j=i; j<arr.length; j++) {
+                xor ^= arr[j];
+                if (xor == K) {
+                    count++;
+                }
+            }
+        }
+        System.out.println(count);
     }
 }
